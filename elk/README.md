@@ -23,7 +23,7 @@ docker run -d --name kibana --link elasticsearch:elasticsearch --network="kong_n
 ```
 docker run -d --name logstash -v logvol:/usr/share/logstash/pipeline/ -v logstash_persist:/usr/share/logstash/data/ --network="kong_net" docker.elastic.co/logstash/logstash:7.7.0
 ```
-* Once setup, use `docker volumes inspect logvol' to find its location. Then remove logtash instance, go to specified path, modify the logstash config file with given configurations and then start again. Alternatively, it can be bind mounted from the start as well. 
+* Once setup, use `docker volumes inspect logvol` to find its location. Then remove logtash instance, go to specified path, modify the logstash config file with given configurations and then start again. Alternatively, it can be bind mounted from the start as well. 
 * Ports 8000(http input) 9600(output) are not exposed.
 
 ### Summary
