@@ -1,0 +1,264 @@
+_format_version: '1.1'
+consumers:
+- custom_id: admin_consumer
+  created_at: 1593197864
+  id: 733499b2-694d-4785-b99a-af1ac97112aa
+  tags:
+  - admin
+  username: admin_consumer
+- custom_id: user_consumer
+  created_at: 1593197791
+  id: fc149476-9623-48b1-8c8f-a95ee03cfbfc
+  tags:
+  - user
+  username: user_consumer
+acls:
+- created_at: 1593197805
+  consumer: fc149476-9623-48b1-8c8f-a95ee03cfbfc
+  id: 0615618e-464e-4a59-992b-7d8b84b5dbc7
+  group: user_group
+- created_at: 1593197874
+  consumer: 733499b2-694d-4785-b99a-af1ac97112aa
+  id: 46893fef-cef1-4093-9d84-7fba8021b7a8
+  group: admin_group
+jwt_secrets:
+- rsa_public_key: |-
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4MpZU1wqliLQWQlBvaR0
+    pn+PqfKdaSIIvcZHQo7avpuP9qDYMFXZnmeIA6wV9GANqtqoAilwLiTW/2YpPbn+
+    u9yrh438CCRlSDYbiIYFg4dAguVgu7yym8LvU6OnfOJeHvMJAX9wGiKkgNLXQD+r
+    xyi+pBzys3bD2+URbYYd7O4E+e2Ni7vBWUyDnU91Wk5lGRAka5jYBk2e4E4Rp0UV
+    RPF0KX/SkIJ5fXX0nezxNnzpsNLkGOw8p6TyNAGkHAGOkXLsZAoNvWST8dBbAP6W
+    dN3CCNItddn/ECCV57EgSs83ZHF/ySlB6TokY1nO8lNyP/L5YDkgz+gtUjrz292f
+    NwIDAQAB
+    -----END PUBLIC KEY-----
+  created_at: 1593197895
+  consumer: 733499b2-694d-4785-b99a-af1ac97112aa
+  id: 62328d4e-24fd-46fc-a823-b7c2abc7c6aa
+  key: lite_1
+  secret: F3jBHCtfA8hFqOQ1xx1wzM7FZG8QbYo0
+  algorithm: RS256
+- rsa_public_key: |-
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4MpZU1wqliLQWQlBvaR0
+    pn+PqfKdaSIIvcZHQo7avpuP9qDYMFXZnmeIA6wV9GANqtqoAilwLiTW/2YpPbn+
+    u9yrh438CCRlSDYbiIYFg4dAguVgu7yym8LvU6OnfOJeHvMJAX9wGiKkgNLXQD+r
+    xyi+pBzys3bD2+URbYYd7O4E+e2Ni7vBWUyDnU91Wk5lGRAka5jYBk2e4E4Rp0UV
+    RPF0KX/SkIJ5fXX0nezxNnzpsNLkGOw8p6TyNAGkHAGOkXLsZAoNvWST8dBbAP6W
+    dN3CCNItddn/ECCV57EgSs83ZHF/ySlB6TokY1nO8lNyP/L5YDkgz+gtUjrz292f
+    NwIDAQAB
+    -----END PUBLIC KEY-----
+  created_at: 1593197836
+  consumer: fc149476-9623-48b1-8c8f-a95ee03cfbfc
+  id: 9cb1a2af-b4d7-4c50-aae9-b123fdf012e2
+  key: lite_2
+  secret: xFwSexJKlQi3FljYXtpeWEsuJGZ4psCA
+  algorithm: RS256
+services:
+- host: 172.21.0.1
+  created_at: 1593118923
+  connect_timeout: 60000
+  id: 0cb1a0dd-9a77-4345-8d8d-64ff0d6ab98a
+  protocol: http
+  name: client_verified
+  read_timeout: 60000
+  port: 8079
+  path: /verified
+  updated_at: 1593198383
+  retries: 5
+  write_timeout: 60000
+  tags: {}
+- host: admin
+  created_at: 1593118023
+  connect_timeout: 60000
+  id: 5c23c980-6fb9-48c9-a181-60f982d945dc
+  protocol: http
+  name: admin_service
+  read_timeout: 60000
+  port: 9090
+  path: /user
+  updated_at: 1593118187
+  retries: 5
+  write_timeout: 60000
+  tags: {}
+- host: auth
+  created_at: 1593117894
+  connect_timeout: 60000
+  id: 63ff1284-8c74-44b2-ad99-cfeb2580c974
+  protocol: http
+  name: auth_service
+  read_timeout: 60000
+  port: 8079
+  path: /auth
+  updated_at: 1593117921
+  retries: 5
+  write_timeout: 60000
+  tags: {}
+- host: 172.21.0.1
+  created_at: 1593118861
+  connect_timeout: 60000
+  id: 74109ae9-d50c-4186-9984-d2d1ebd71f56
+  protocol: http
+  name: client_service
+  read_timeout: 60000
+  port: 8079
+  path: /
+  updated_at: 1593198398
+  retries: 5
+  write_timeout: 60000
+  tags: {}
+routes:
+- id: 135f3642-10f9-4285-8dc2-934b62c8ca0f
+  path_handling: v1
+  paths:
+  - /verified
+  protocols:
+  - http
+  - https
+  service: 0cb1a0dd-9a77-4345-8d8d-64ff0d6ab98a
+  name: verified_route
+  strip_path: true
+  preserve_host: false
+  regex_priority: 0
+  updated_at: 1593118986
+  https_redirect_status_code: 426
+  created_at: 1593118986
+- id: 8379118d-932e-4778-9ac7-b228cfc178bb
+  path_handling: v1
+  paths:
+  - /user
+  protocols:
+  - http
+  - https
+  service: 5c23c980-6fb9-48c9-a181-60f982d945dc
+  name: admin_route
+  strip_path: true
+  preserve_host: false
+  regex_priority: 0
+  updated_at: 1593197154
+  https_redirect_status_code: 426
+  created_at: 1593118055
+- id: 8f429a20-a93a-4c4e-bcc7-8afe810b7feb
+  path_handling: v1
+  paths:
+  - /auth
+  protocols:
+  - http
+  - https
+  service: 63ff1284-8c74-44b2-ad99-cfeb2580c974
+  name: auth_route
+  strip_path: true
+  preserve_host: false
+  regex_priority: 0
+  updated_at: 1593117955
+  https_redirect_status_code: 426
+  created_at: 1593117955
+- id: a5d99d07-6fb8-4105-ab34-e8f762c9c2c4
+  path_handling: v1
+  paths:
+  - /
+  protocols:
+  - http
+  - https
+  service: 74109ae9-d50c-4186-9984-d2d1ebd71f56
+  name: client_route
+  strip_path: true
+  preserve_host: false
+  regex_priority: 0
+  updated_at: 1593118946
+  https_redirect_status_code: 426
+  created_at: 1593118946
+plugins:
+- created_at: 1593198643
+  config:
+    hide_groups_header: false
+    whitelist:
+    - admin_group
+  id: 2bb4d585-66a1-446d-88f3-8d72ce2eee8c
+  service: 5c23c980-6fb9-48c9-a181-60f982d945dc
+  enabled: true
+  protocols:
+  - grpc
+  - grpcs
+  - http
+  - https
+  name: acl
+- created_at: 1593198587
+  config:
+    hide_groups_header: false
+    whitelist:
+    - user_group
+    - admin_group
+  id: 3791b8ed-9fc9-4583-bebb-73fd4fe377c6
+  service: 0cb1a0dd-9a77-4345-8d8d-64ff0d6ab98a
+  enabled: true
+  protocols:
+  - grpc
+  - grpcs
+  - http
+  - https
+  name: acl
+- created_at: 1593195078
+  config:
+    flush_timeout: 2
+    http_endpoint: http://logstash:8000
+    retry_count: 10
+    timeout: 10000
+    queue_size: 1
+    keepalive: 60000
+    content_type: application/json
+    method: POST
+  id: 6193080f-396e-4dd8-8816-6398a9eba5da
+  enabled: true
+  protocols:
+  - grpc
+  - grpcs
+  - http
+  - https
+  name: http-log
+- created_at: 1593198622
+  config:
+    secret_is_base64: false
+    run_on_preflight: true
+    uri_param_names:
+    - jwt
+    key_claim_name: iss
+    header_names:
+    - authorization
+    maximum_expiration: 0
+    claims_to_verify:
+    - exp
+    cookie_names:
+    - access_token
+  id: 7afb939e-0f7c-4171-a0e3-0023b7a26f98
+  service: 5c23c980-6fb9-48c9-a181-60f982d945dc
+  enabled: true
+  protocols:
+  - grpc
+  - grpcs
+  - http
+  - https
+  name: jwt
+- created_at: 1593197731
+  config:
+    secret_is_base64: false
+    run_on_preflight: true
+    uri_param_names:
+    - jwt
+    key_claim_name: iss
+    header_names:
+    - authorization
+    maximum_expiration: 0
+    claims_to_verify:
+    - exp
+    cookie_names:
+    - access_token
+  id: 8c9d4ea7-c1f5-458f-bff5-46fc2ebc55f9
+  service: 0cb1a0dd-9a77-4345-8d8d-64ff0d6ab98a
+  enabled: true
+  protocols:
+  - grpc
+  - grpcs
+  - http
+  - https
+  name: jwt
