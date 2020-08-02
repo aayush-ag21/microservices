@@ -5,3 +5,6 @@ We have designed a frontend, an API Gateway and 2 services besides the ELK Stack
 
 ## The Architecture
 ![The Architecture](https://github.com/aayush-ag21/microservices/blob/master/Architecture.JPG)
+
+## Getting Started
+To start deploying in local system, please refer to [https://github.com/aayush-ag21/microservices/tree/master/gateway](README.md). 
